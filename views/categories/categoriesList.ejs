@@ -1,0 +1,28 @@
+<%- include ('../partials/header.ejs') %>
+
+<body>
+    <section>
+        <h2>Categories</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% categories.forEach(category => { %>
+                    <tr>
+                        <th><%= category.id %></th>
+                        <th><%= category.title %></th>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </section>
+</body>
+
+<%- include ('../partials/footer.ejs') %>

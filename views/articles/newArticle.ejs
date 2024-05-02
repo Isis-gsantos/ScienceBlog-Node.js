@@ -1,0 +1,36 @@
+<%- include ('../partials/header.ejs') %>
+
+<body>
+    <section class="container">
+        <article class="content">
+            <h2>Article Registration</h2> <hr>
+        
+            <form method="POST" action="/articles/save" enctype="multipart/form-data" class="form">
+                <input type="text" name="title" placeholder="Set the category title"> <br>
+                <label for="imageUpload">Upload an image:</label>
+                <input type="file" id="imageUpload" name="imagePath" accept="image/png, image/jpeg">
+                <textarea name="body" id="article"></textarea>
+                <label for="">Categories</label>
+                <select name="category">
+                    <% categories.forEach((category) => { %>
+                        <option value="<%= category.id %>"><%= category.title %></option>
+                    <% }) %>
+                </select> <br>
+                <a href="/categories/new">Create new category</a> <br>
+                <button type="submit">Register</button>
+            </form>
+        </article>
+    </section>
+</body>
+
+<%- include ('../partials/footer.ejs') %>
+
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: "#article",
+        plugins: [
+            'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons' 
+        ]
+    });
+</script>

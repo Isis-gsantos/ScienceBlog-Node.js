@@ -5,8 +5,8 @@ const connection = require("./database/database")
 
 const Article = require("./articles/Article");
 const Category = require("./categories/Category");
-
 const categoriesController = require("./categories/CategoriesController");
+const articlesController = require("./articles/ArticlesController");
 
 app.set("view engine", "ejs");
 app.use(express.static('public'));
@@ -20,9 +20,6 @@ Article.belongsTo(Category);
 connection
     .authenticate()
     .then(() => {
-        console.log("Conexão feita com o banco de dados");
-
-        // Sincroniza todos os modelos com o banco de dados
         connection.sync()
             .then(() => {
                 console.log("Banco de dados sincronizado");
@@ -36,6 +33,7 @@ connection
     });
 
 app.use("/", categoriesController);
+app.use("/", articlesController);
 
 app.get("/", (req, res) => {
     res.render("index")
