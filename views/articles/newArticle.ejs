@@ -1,4 +1,5 @@
 <%- include ('../partials/header.ejs') %>
+<%- include ('../partials/navbar.ejs') %>
 
 <body>
     <section class="container">
@@ -6,18 +7,18 @@
             <h2>Article Registration</h2> <hr>
         
             <form method="POST" action="/articles/save" enctype="multipart/form-data" class="form">
-                <input type="text" name="title" placeholder="Set the category title"> <br>
-                <label for="imageUpload">Upload an image:</label>
-                <input type="file" id="imageUpload" name="imagePath" accept="image/png, image/jpeg">
+                <input type="text" name="title" placeholder="Set the category title" class="max-width title"> <br>
+                <label for="imageUpload">Upload an image</label> <br>
+                <input type="file" id="imageUpload" name="imagePath" accept="image/png, image/jpeg" class="imageUpload">
                 <textarea name="body" id="article"></textarea>
-                <label for="">Categories</label>
-                <select name="category">
-                    <% categories.forEach((category) => { %>
-                        <option value="<%= category.id %>"><%= category.title %></option>
-                    <% }) %>
+                <label for="">Categories</label> <br>
+                <select class="max-width" name="category">
+                <% categories.forEach((category) => { %>
+                    <option value="<%= category.id %>"><%= category.title %></option>
+                <% }) %>
                 </select> <br>
-                <a href="/categories/new">Create new category</a> <br>
-                <button type="submit">Register</button>
+                <a href="/categories/new">Create a category</a>
+                <button class="btn article-create" type="submit">Register</button>
             </form>
         </article>
     </section>

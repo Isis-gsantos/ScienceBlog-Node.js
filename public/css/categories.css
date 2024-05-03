@@ -1,0 +1,71 @@
+.categories {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+hr {
+    height: 1px;
+    background-color: #e4e4e4;
+    border: none; 
+    overflow: visible;
+    display: block; 
+    width: 100%;
+    margin: 10px 0 30px;
+}
+
+
+table {
+    width: 100%; 
+    border-collapse: collapse; 
+}
+
+th, td {
+    text-align: left; 
+    padding: 12px; 
+    border: 1px solid #ccc; 
+}
+
+th {
+    color: #333; 
+}
+
+tbody tr:hover {
+    background-color: #f0f0f0; 
+}
+
+.edit {
+    width: 500px;
+}
+
+.edit form input {
+    font-size: 14px;
+    width: 100%;
+    padding: 6px;
+}
+
+.btn-fontsize {
+    font-size: 14px;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.icons .btn-edit {
+    background-color: #ffdd00;
+    &:hover {
+        background-color: #faa307;
+    }
+}
+
+.icons .btn-delete {
+    background-color: red;
+    &:hover {
+        background-color: #ef233c;
+    }
+}

@@ -27,4 +27,42 @@ router.get("/categories", (req, res) => {
     })
 });
 
+router.post("/categories/delete", (req, res) => {
+    const id = req.body.id;
+
+    if(id != undefined) {
+        if(!isNaN(id)) {
+            Category.destroy({
+                where: {
+                    id: id
+                }
+            }).then(() => {
+                res.redirect("/categories");
+            })
+        } else {
+            res.redirect("/categories");
+        }
+    } else {
+        res.redirect("/categories");
+    }
+});
+
+router.get("/categories/edit/:id", (req, res) => {
+    const id = req.params.id;
+
+    if(isNaN(id)) {
+        res.redirect("/categories");
+    } 
+
+    Category.findByPk(id).then(category => {
+        if(category != undefined) {
+            res.render("categories/edit", { category: category })
+        } else {
+            res.redirect("/categories")
+        }
+    }).catch(err => {
+        res.redirect("/categories")
+    })
+});
+
 module.exports = router;

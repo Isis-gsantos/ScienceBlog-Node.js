@@ -12,6 +12,7 @@ app.set("view engine", "ejs");
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false})); 
 app.use(bodyParser.json()); 
+app.use('/fa', express.static(__dirname + '/node_modules/@fortawesome/fontawesome-free'));
 
 Category.hasMany(Article);
 Article.belongsTo(Category);

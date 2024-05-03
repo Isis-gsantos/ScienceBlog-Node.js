@@ -1,12 +1,17 @@
 <%- include ('../partials/header.ejs') %>
+<%- include ('../partials/navbar.ejs') %>
 
 <body>
-    <section>
-        <h2>Category Registration</h2>
-        <form method="POST" action="/categories/save">
-            <input type="text" name="title" placeholder="Set the category title">
-            <button type="submit">Register</button>
-        </form>
+    <section class="container">
+        <article class="content edit">
+            <h2>Category Registration</h2>
+            <hr>
+
+            <form method="POST" action="/categories/save">
+                <input type="text" name="title" placeholder="Set the category title">
+                <button type="submit" class="btn btn-fontsize">Register</button>
+            </form>
+        </article>
     </section>
 </body>
 

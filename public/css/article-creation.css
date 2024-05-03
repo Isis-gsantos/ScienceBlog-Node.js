@@ -1,0 +1,48 @@
+.content h2 {
+    color: cornflowerblue;
+}
+
+.form {
+    margin: 10px 0; 
+}
+
+.form * {
+    margin: 8px 0;
+}
+
+.form .title,
+.form select {
+    padding: 5px;
+}
+
+.form a {
+    color: cornflowerblue;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.imageUpload {
+    color: transparent;
+}
+
+.imageUpload::-webkit-file-upload-button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.imageUpload:hover::-webkit-file-upload-button {
+    background-color: #0077b6;
+}
+
+.max-width, .btn {
+    width: 100%;
+}
+
+.article-create {
+    font-size: 16px;
+}
