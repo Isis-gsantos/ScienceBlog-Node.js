@@ -21,10 +21,6 @@
     font-weight: 500;
 }
 
-.imageUpload {
-    color: transparent;
-}
-
 .imageUpload::-webkit-file-upload-button {
     padding: 10px;
     border: none;

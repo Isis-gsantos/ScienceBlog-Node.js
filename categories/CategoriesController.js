@@ -33,9 +33,7 @@ router.post("/categories/delete", (req, res) => {
     if(id != undefined) {
         if(!isNaN(id)) {
             Category.destroy({
-                where: {
-                    id: id
-                }
+                where: { id: id }
             }).then(() => {
                 res.redirect("/categories");
             })

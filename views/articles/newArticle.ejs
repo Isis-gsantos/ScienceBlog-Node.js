@@ -9,7 +9,7 @@
             <form method="POST" action="/articles/save" enctype="multipart/form-data" class="form">
                 <input type="text" name="title" placeholder="Set the category title" class="max-width title"> <br>
                 <label for="imageUpload">Upload an image</label> <br>
-                <input type="file" id="imageUpload" name="imagePath" accept="image/png, image/jpeg" class="imageUpload">
+                <input type="file" id="imageUpload" name="imagePath" accept="image/png, image/jpeg" class="imageUpload"> 
                 <textarea name="body" id="article"></textarea>
                 <label for="">Categories</label> <br>
                 <select class="max-width" name="category">
@@ -34,4 +34,15 @@
             'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons' 
         ]
     });
+
+    document.getElementById('imageUpload').addEventListener('change', function() {
+    var fileName = this.files[0].name;
+    var fileChosen = document.getElementById('file-chosen');
+
+    if (fileName) { // Se um arquivo foi escolhido
+        fileChosen.textContent = 'File chosen: ' + fileName;
+    } else {
+        fileChosen.textContent = 'No file chosen';
+    }
+});
 </script>
