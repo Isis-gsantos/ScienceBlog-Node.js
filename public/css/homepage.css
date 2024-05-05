@@ -1,0 +1,14 @@
+.home-navbar {
+    background-image: url('../images/Jellyfish.jpg');
+    background-size: cover;
+    height: 60vh;
+}
+
+.img {
+    width: 100%; 
+    height: auto;
+}
+
+.articles-container {
+    padding: 20px 0;
+}

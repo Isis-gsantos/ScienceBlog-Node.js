@@ -1,8 +1,26 @@
 <%- include ('partials/header.ejs') %>
 
 <body>
-    <h1>ScrienceBlog</h1>
-    <img src="images/Jellyfish.jpg" alt="a jellyfish image">
+    <header class="home-navbar">
+        <section>
+            <h1>ScrienceBlog</h1>
+        </section>
+    </header>
+
+    <section class="container">
+        <article class="content">
+            <a href="/articles/new">Create new article</a>
+            <% articles.forEach(article => { %>
+                <div class="articles-container">
+                    <h3><%= article.title %></h3>
+                    <hr>
+                    <img class="img" src="/<%= article.imagePath %>" alt="Image for <%= article.title %>">
+
+                    <a href=""><button class="btn">Read article</button></a>
+                </div>
+            <% }) %>
+        </article>
+    </section>
 </body>
 
 <%- include ('partials/footer.ejs') %>

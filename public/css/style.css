@@ -2,6 +2,7 @@
 @import url('./navbar.css');
 @import url('./article-creation.css');
 @import url('./categories-articles.css');
+@import url('./homepage.css');
 
 * {
     margin: 0;

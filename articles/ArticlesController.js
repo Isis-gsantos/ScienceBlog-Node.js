@@ -21,7 +21,8 @@ router.get("/articles/new", (req, res) => {
 
 router.post("/articles/save", upload.single('imagePath'), (req, res) => {
     const title = req.body.title;
-    const imagePath = req.body.imagePath;
+    // const imagePath = req.file ? req.file.path : null; 
+    const imagePath = req.file ? 'uploads/' + req.file.filename : null;
     const body = req.body.body;
     const category = req.body.category;
 
@@ -82,7 +83,9 @@ router.post("/articles/update", upload.single('imagePath'), (req, res) => {
 
     const body = req.body.body;
     const category = req.body.category;
-    const imagePath = req.file ? req.file.path : undefined;
+    // const imagePath = req.file ? req.file.path : undefined;
+    const imagePath = req.file ? 'uploads/' + req.file.filename : null;
+
     
     let updateValues = { 
         title: title, 
