@@ -1,0 +1,23 @@
+<%- include ('header.ejs') %>
+
+<body>
+    <header class="home">
+        <div class="home-navbar">
+            <a href="/"><h1>ScienceBlog</h1></a>
+
+            <ul class="category-list">
+                <% categories.forEach(category => { %>
+                    <li>
+                        <a href="/category/<%= category.slug %>"><%= category.title %></a>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+        
+        <div class="intro-text">
+            <h2>At ScienceBlog, we dive deep into the world of science, unraveling mysteries, analyzing innovations, and inspiring curiosity about our world and beyond</h2>
+        </div>
+    </header>
+</body>
+
+<%- include ('footer.ejs') %>

@@ -1,0 +1,50 @@
+.home-navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+.category-list {
+    display: flex; 
+    gap: 20px;
+}
+
+.category-list li a {
+    font-size: 16px;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+        z-index: 4;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}
+
+.intro-text {
+    position: absolute;
+    bottom: 30%;
+    left: 0;
+    right: 0;
+    max-width: 65%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.intro-text h2 {
+    font-weight: 500;
+}
