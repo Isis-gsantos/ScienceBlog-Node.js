@@ -106,5 +106,38 @@ router.post("/articles/update", upload.single('imagePath'), (req, res) => {
     });
 });
 
+router.get("/articles/page/:num", (req, res) => {
+    var page = req.params.num;
+    var offset = 0;
+
+    if(isNaN(page) || page == 1) {
+        offset = 0;
+    } else {
+        offset = (parseInt(page) - 1) * 8;
+    }
+
+    Article.findAll({
+        limit: 8,
+        offset: offset,
+        order: [['id', 'DESC']]
+    }).then(articles => {
+        var next;
+        if(offset + 8 >= articles.count) {
+            next = false;
+        } else {
+            next = true;
+        }
+
+        var result = {
+            articles: articles,
+            next: next,
+            page: parseInt(page)
+        }
+
+        Category.findAll().then(categories => {
+            res.render("articles/page", {result: result, categories: categories});
+        });
+    });
+});
 
 module.exports = router

@@ -1,0 +1,40 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/homenavbar.ejs') %>
+
+<body>
+    <section class="container">
+        <a class="btn btn-create-article" href="/articles/new">Create new article</a>
+        <article class="content">
+            <section class="articles-container">
+                <% result.articles.forEach(article => { %>
+                    <div class="article">
+                        <h3><%= article.title %></h3>
+                        <hr>
+                        <img class="img" src="/<%= article.imagePath %>" alt="Image for <%= article.title %>">
+                        <a href="/<%= article.slug %>"><button class="btn">Read article</button></a>
+                    </div>
+                <% }) %>
+            </section>
+
+            <div>
+                <% if(result.page > 2) { %>
+                    <a href="/articles/page/<%= result.page - 1 %>" style="float: left;">
+                        <button class="btn"> < Preview</button>
+                    </a>
+                <% } else if (result.page == 2) { %>
+                    <a href="/" style="float: left;">
+                        <button class="btn"> < Preview</button>
+                    </a>
+                <% } %>
+
+                <% if(result.next) { %>
+                    <a href="/articles/page/<%= result.page + 1 %>" style="float: right;">
+                        <button class="btn">Next > </button>
+                    </a>
+                <% } %>
+            </div>
+        </article>
+    </section>
+</body>
+
+<%- include('../partials/footer.ejs') %>

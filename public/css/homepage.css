@@ -39,7 +39,11 @@
 
 .article {
     padding: 20px;
-    max-width: 400px; /* Define uma largura máxima para cada artigo */
+    max-width: 400px; 
     width: 100%; 
-    /* box-sizing: border-box;  */
+}
+
+.btn-create-article {
+    max-width: 170px;
+    margin-bottom: 10px;
 }

@@ -26,6 +26,7 @@ body {
     align-items: center;
     min-height: 90vh;
     padding: 20px;
+    position: relative;
 }
 
 .content {

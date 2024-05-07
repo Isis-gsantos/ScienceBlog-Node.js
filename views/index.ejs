@@ -3,19 +3,24 @@
 
 <body>
     <section class="container">
-        <article class="content">
-            <a class="btn" href="/articles/new">Create new article</a>
-
+        <a class="btn btn-create-article" href="/articles/new">Create new article</a>
+        <article class="content btn-create-article">
             <section class="articles-container">
                 <% articles.forEach(article => { %>
                     <div class="article">
                         <h3><%= article.title %></h3>
                         <hr>
                         <img class="img" src="/<%= article.imagePath %>" alt="Image for <%= article.title %>">
-                        <a href="/<%= article.slug %>"><button class="btn">Read article</button></a>
+                        <a href="/<%= article.slug %>"><button class="btn">Read more</button></a>
                     </div>
                 <% }) %>
             </section>
+
+            <div>
+                <a href="/articles/page/2" style="float: right;">
+                    <button class="btn">Next > </button>
+                </a>
+            </div>
         </article>
     </section>
 </body>
