@@ -1,12 +1,16 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const connection = require("./database/database")
+const session = require("express-session");
+const connection = require("./database/database");
 
 const Article = require("./articles/Article");
 const Category = require("./categories/Category");
+const User = require("./users/User");
+
 const categoriesController = require("./categories/CategoriesController");
 const articlesController = require("./articles/ArticlesController");
+const userController = require("./users/UserController");
 
 app.set("view engine", "ejs");
 app.use(express.static('public'));
@@ -16,6 +20,12 @@ app.use('/fa', express.static(__dirname + '/node_modules/@fortawesome/fontawesom
 
 Category.hasMany(Article);
 Article.belongsTo(Category);
+
+//Session
+app.use(session({
+    secret: "kasdkasdlsd",
+    cookie: { maxAge: 1200000 }
+}));
 
 //Database
 connection
@@ -35,14 +45,16 @@ connection
 
 app.use("/", categoriesController);
 app.use("/", articlesController);
+app.use("/", userController);
 
 app.get("/", (req, res) => {
+    const user = req.session.user;
     Article.findAll({
         order: [['id', 'DESC']],
         limit: 8
     }).then(articles => {
         Category.findAll().then(categories => {
-            res.render("index", { articles: articles, categories: categories });
+            res.render("index", { articles: articles, categories: categories, user: user });
         });
     });
 });

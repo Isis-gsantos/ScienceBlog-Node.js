@@ -11,6 +11,13 @@
                         <a href="/category/<%= category.slug %>"><%= category.title %></a>
                     </li>
                 <% }) %>
+
+                <% if (!user) { %> 
+                    <li><a href="/login">Login</a></li>
+                <% } else { %>  
+                    <li><a href="#">Perfil</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                <% } %>
             </ul>
         </div>
         

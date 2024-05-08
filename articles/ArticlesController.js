@@ -4,8 +4,9 @@ const slugify = require("slugify");
 const Article = require("./Article");
 const upload = require("../middleware/imageUpload");
 const Category = require("../categories/Category");
+const adminAuth = require("../middleware/adminAuth");
 
-router.get("/articles", (req, res) => {
+router.get("/articles", adminAuth, (req, res) => {
     Article.findAll({
         include: [{ model: Category }]
     }).then(articles => {
@@ -13,13 +14,13 @@ router.get("/articles", (req, res) => {
     })
 });
 
-router.get("/articles/new", (req, res) => {
+router.get("/articles/new", adminAuth, (req, res) => {
     Category.findAll().then(categories => {
         res.render("articles/newArticle", { categories: categories });
     })
 });
 
-router.post("/articles/save", upload.single('imagePath'), (req, res) => {
+router.post("/articles/save", adminAuth, upload.single('imagePath'), (req, res) => {
     const title = req.body.title;
     const imagePath = req.file ? 'uploads/' + req.file.filename : null;
     const body = req.body.body;
@@ -36,7 +37,7 @@ router.post("/articles/save", upload.single('imagePath'), (req, res) => {
     })
 });
 
-router.post("/articles/delete", (req, res) => {
+router.post("/articles/delete", adminAuth, (req, res) => {
     const id = req.body.id;
 
     if(id != undefined) {
@@ -54,7 +55,7 @@ router.post("/articles/delete", (req, res) => {
     }
 });
 
-router.get("/articles/edit/:id", (req, res) => {
+router.get("/articles/edit/:id", adminAuth, (req, res) => {
     const id = req.params.id;
 
     Article.findByPk(id).then(article => {
@@ -70,10 +71,9 @@ router.get("/articles/edit/:id", (req, res) => {
     })
 });
 
-router.post("/articles/update", upload.single('imagePath'), (req, res) => {
+router.post("/articles/update", adminAuth, upload.single('imagePath'), (req, res) => {
     const id = req.body.id;
     const title = req.body.title;
-    // console.log("Título recebido:", title);
 
     if (typeof title !== 'string' || title.trim() === '') {
         console.error('Slugify error: Title is not a string or is empty.');

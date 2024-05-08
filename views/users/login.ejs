@@ -1,0 +1,19 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/navbar.ejs') %>
+
+<body>
+    <section class="container">
+        <article class="content">
+            <h2>Login</h2>
+            <hr>
+
+            <form method="POST" action="/authenticate" class="form">
+                <input class="max-width title" type="email" name="email" placeholder="Email" required> <br>
+                <input class="max-width title" type="password" name="password" placeholder="******" required>
+                <button class="btn" type="submit">Login</button>
+            </form>
+        </article>
+    </section>
+</body>
+
+<%- include ('../partials/footer.ejs') %>
