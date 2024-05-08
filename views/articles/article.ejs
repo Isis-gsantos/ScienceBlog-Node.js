@@ -3,12 +3,14 @@
 
 <body>
     <section class="container">
-        <a href="/"> < Return</a>
-        <article class="content">
-            <h2><%= article.title %></h2>
-            <hr>
-            <img class="img" src="/<%= article.imagePath %>" alt="Image for <%= article.title %>">
-            <%- article.body %>
+        <a href="/" style="margin-bottom: 20px;"><i class="fa-solid fa-arrow-left"></i>Return</a>
+        <article class="content article-page-content">
+            <div>
+                <h2><%= article.title %></h2>
+                <hr>
+                <img src="/<%= article.imagePath %>" alt="Image for <%= article.title %>">
+            </div>
+            <p><%- article.body %></p>
         </article>
     </section>
 </body>

@@ -1,0 +1,23 @@
+.article-page-content img {
+    max-width: 600px;
+    height: auto;
+}
+
+.article-page-content div {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.article-page-content p {
+    margin: 20px;
+}
+
+@media(max-width: 650px) {
+    .article-page-content img {
+        width: 100%;
+    }
+
+    .article-page-content p {
+        margin: 8px;
+    }
+}

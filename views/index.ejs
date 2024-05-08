@@ -4,14 +4,16 @@
 <body>
     <section class="container">
         <a class="btn btn-create-article" href="/articles/new">Create new article</a>
-        <article class="content btn-create-article">
+        <article  style="padding: 0;">
             <section class="articles-container">
                 <% articles.forEach(article => { %>
                     <div class="article">
                         <h3><%= article.title %></h3>
                         <hr>
-                        <img class="img" src="/<%= article.imagePath %>" alt="Image for <%= article.title %>">
-                        <a href="/<%= article.slug %>"><button class="btn">Read more</button></a>
+                        <div class="image-container">
+                            <img class="img" src="/<%= article.imagePath %>" alt="Image for <%= article.title %>">
+                            <a href="/<%= article.slug %>" class="btn-overlay"><button class="btn">Read more</button></a>
+                        </div>
                     </div>
                 <% }) %>
             </section>
@@ -26,3 +28,13 @@
 </body>
 
 <%- include('partials/footer.ejs') %>
+
+<script>
+    const hamburguer = document.querySelector(".hamburguer-menu");
+    const nav = document.querySelector(".home-navbar");
+
+    hamburguer.addEventListener("click", () => {
+        nav.classList.toggle("active");
+    });
+
+</script>

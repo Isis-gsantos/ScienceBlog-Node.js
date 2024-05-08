@@ -2,10 +2,11 @@
 
 <body>
     <header class="home">
-        <div class="home-navbar">
+        <nav class="home-navbar">
             <a href="/"><h1>ScienceBlog</h1></a>
+            <button class="hamburguer-menu"></button>
 
-            <ul class="category-list">
+            <ul class="nav-list">
                 <% categories.forEach(category => { %>
                     <li>
                         <a href="/category/<%= category.slug %>"><%= category.title %></a>
@@ -13,13 +14,13 @@
                 <% }) %>
 
                 <% if (!user) { %> 
-                    <li><a href="/login">Login</a></li>
+                    <li><a href="/login"><i class="fa-solid fa-arrow-right-to-bracket"></i>Login</a></li>
                 <% } else { %>  
-                    <li><a href="#">Perfil</a></li>
-                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="#"><i class="fa-solid fa-user"></i>Profile</a></li>
+                    <li><a href="/logout"><i class="fa-solid fa-arrow-right-to-bracket"></i>Logout</a></li>
                 <% } %>
             </ul>
-        </div>
+        </nav>
         
         <div class="intro-text">
             <h2>At ScienceBlog, we dive deep into the world of science, unraveling mysteries, analyzing innovations, and inspiring curiosity about our world and beyond</h2>
@@ -28,3 +29,13 @@
 </body>
 
 <%- include ('footer.ejs') %>
+
+<script>
+    const hamburguer = document.querySelector(".hamburguer-menu");
+    const nav = document.querySelector(".home-navbar");
+
+    hamburguer.addEventListener("click", () => {
+        nav.classList.toggle("active");
+    });
+
+</script>
